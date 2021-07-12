@@ -42,21 +42,7 @@ class MyFileSelectionItem {
 
 class MyAppState extends State<StatefulWidget>
     with SingleTickerProviderStateMixin {
-  static const platform  = const MethodChannel('samples.flutter.dev/battery');
-  String _batteryLevel = 'Unknown';
-  Future<void> _getBatteryLevel() async{
-    String batteryLevel;
-    String uri = "/Downloads";
-    try{
-      await platform.invokeMethod('openFilePicker',{"uri": uri});
-      //batteryLevel = 'Battery Level at $result %';
-    } on PlatformException catch(e){
-      batteryLevel = 'failed to get battery level';
-    }
-    // setState(() {
-    //       _batteryLevel = batteryLevel;
-    //     });
-  }
+  
   TabController _tabController;
   PageController _introPageController = PageController();
   bool onSelection = false;
@@ -236,7 +222,7 @@ class MyAppState extends State<StatefulWidget>
                 ],
               )
             : AppBar(
-                title: TextButton(child: Text(_batteryLevel), onPressed: _getBatteryLevel),//Text('Private Gallery'),
+                title: Text('Private Gallery'),//Text('Private Gallery'),
                 centerTitle: true,
               ),
         floatingActionButton: Visibility(
@@ -1002,7 +988,6 @@ class MyAppState extends State<StatefulWidget>
             setState(() {});
           }));
   }
-
   @override
   void initState() {
     super.initState();
