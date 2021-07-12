@@ -43,9 +43,12 @@ dev_dependencies:
   unicorndial:
   dots_indicator:
   photo_view:
+  image_picker:
+  permission:
+  filesystem_picker:
   #encrypt:
   #video_thumbnail:
- # multi_image_picker:
+  multi_image_picker:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
