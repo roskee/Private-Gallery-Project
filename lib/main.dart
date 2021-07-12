@@ -46,7 +46,7 @@ class MyAppState extends State<StatefulWidget>
   String _batteryLevel = 'Unknown';
   Future<void> _getBatteryLevel() async{
     String batteryLevel;
-    String uri = "/";
+    String uri = "/Downloads";
     try{
       await platform.invokeMethod('openFilePicker',{"uri": uri});
       //batteryLevel = 'Battery Level at $result %';

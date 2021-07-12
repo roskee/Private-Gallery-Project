@@ -1,6 +1,8 @@
 package com.example.myapp
 
 import android.content.Context
+import android.net.Uri
+import android.provider.DocumentsContract
 import android.content.ContextWrapper
 import android.content.Intent
 import android.content.IntentFilter
@@ -27,7 +29,7 @@ class MainActivity: FlutterActivity() {
                     result.error("UNAVAILABLE", "Battery Level not available", null)
                 }
             } else if (call.method == "openFilePicker"){
-                val uri = Uri.parse(call.argument("uri"));
+                val uri = Uri.parse(call.argument("uri"))
                 openFilePicker(uri)
             }
             else {
@@ -47,11 +49,17 @@ class MainActivity: FlutterActivity() {
         return batteryLevel
     }
     private fun openFilePicker(initialUri: Uri){
+        //console.log(initialUri)
+        print("hello")
         val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply{
             addCategory(Intent.CATEGORY_OPENABLE)
             type = "*/*"
             putExtra(DocumentsContract.EXTRA_INITIAL_URI, initialUri)
         }
         startActivityForResult(intent, PICK_PDF_FILE)
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
+        super.onActivityResult(requestCode, resultCode, resultData)
+        print("result is here")
     }
 }
